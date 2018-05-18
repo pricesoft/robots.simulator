@@ -25,30 +25,40 @@ namespace Robots.Simulator
 
       _currentOrientation = new NorthOrientationStrategy();
 
-      ReportAction("placed", _currentPosition);
+      ReportAction("placed");
 
       return true;
     }
 
     public override void Move()
     {
-      _currentPosition = _currentOrientation.Move(_currentPosition);
+      _currentPosition = _currentOrientation.MoveFrom(_currentPosition);
 
-      ReportAction("moved", _currentPosition);
+      ReportAction("moved");
     }
 
     public override void ChangeLeft()
     {
-      _currentOrientation = _currentOrientation.Left();
+      _currentOrientation = _currentOrientation.TurnLeft();
 
-      ReportAction("turned left", _currentPosition);
+      ReportAction("turned left");
     }
 
     public override void ChangeRight()
     {
-      _currentOrientation = _currentOrientation.Right();
+      _currentOrientation = _currentOrientation.TurnRight();
 
-      ReportAction("turned right", _currentPosition);
+      ReportAction("turned right");
+    }
+
+    public override IOrientationStrategy GetCurrentOrientation()
+    {
+      return _currentOrientation;
+    }
+
+    public override IPosition GetCurrentPosition()
+    {
+      return _currentPosition;
     }
   }
 }

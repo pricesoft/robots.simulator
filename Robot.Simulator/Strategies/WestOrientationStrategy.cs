@@ -7,22 +7,22 @@ namespace Robots.Simulator.Strategies
   /// </summary>
   public class WestOrientationStrategy : IOrientationStrategy
   {
-    public IPosition Move(IPosition currentPosition)
+    public IPosition MoveFrom(IPosition currentPosition)
     {
       if (currentPosition.X <= 0)
         return currentPosition;
 
-      currentPosition.X--;
+      currentPosition.X = currentPosition.X - 1;
 
       return currentPosition;
     }
 
-    public IOrientationStrategy Left()
+    public IOrientationStrategy TurnLeft()
     {
       return new SouthOrientationStrategy();
     }
 
-    public IOrientationStrategy Right()
+    public IOrientationStrategy TurnRight()
     {
       return new NorthOrientationStrategy();
     }

@@ -7,7 +7,7 @@ namespace Robots.Simulator.Strategies
   /// </summary>
   public class EastOrientationStrategy : IOrientationStrategy
   {
-    public IPosition Move(IPosition currentPosition)
+    public IPosition MoveFrom(IPosition currentPosition)
     {
       if (currentPosition.X >= 4)
         return currentPosition;
@@ -17,12 +17,12 @@ namespace Robots.Simulator.Strategies
       return currentPosition;
     }
 
-    public IOrientationStrategy Left()
+    public IOrientationStrategy TurnLeft()
     {
       return new NorthOrientationStrategy();
     }
 
-    public IOrientationStrategy Right()
+    public IOrientationStrategy TurnRight()
     {
       return new SouthOrientationStrategy();
     }

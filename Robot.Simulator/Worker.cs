@@ -24,7 +24,7 @@ namespace Robots.Simulator
     /// <param name="commandLineArgs"></param>
     public void ProcessCommand(string commandLineArgs)
     {
-      if (!TrySetCommand(commandLineArgs, out var command))
+      if (!TryGetCommand(commandLineArgs, out var command))
       {
         _writer.WriteLine("Supplied command is unreadable.");
         return;
@@ -37,7 +37,7 @@ namespace Robots.Simulator
         return;
       }
 
-      //Use of switch statement here could be tidied-up to use a Strategy pattern.
+      //TODO: Use of switch statement here could be tidied-up to use a Strategy pattern.
       switch (command.ToLower())
       {
         case "place":
@@ -79,10 +79,13 @@ namespace Robots.Simulator
 
     private void PrintToOutput(object sender, ToyRobotCommandEventArgs args)
     {
-      _writer.WriteLine($"Completed: {args.CommandName}. ({args.Position.X},{args.Position.Y})");
+      var currentOrientation = _robot.GetCurrentOrientation();
+      var currentPosition = _robot.GetCurrentPosition();
+
+      _writer.WriteLine($"Completed: {args.CommandName}. ({currentPosition.X},{currentPosition.Y}) { currentOrientation.Name }");
     }
 
-    private bool TrySetCommand(string argString, out string command)
+    private bool TryGetCommand(string argString, out string command)
     {
       var containsArgs = argString.Contains(" ");
 

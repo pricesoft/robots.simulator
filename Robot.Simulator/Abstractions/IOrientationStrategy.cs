@@ -4,8 +4,8 @@
   {
     OrientationEnum Name { get; }
 
-    IOrientationStrategy Right();
-    IOrientationStrategy Left();
-    IPosition Move(IPosition currentPosition);
+    IOrientationStrategy TurnRight();
+    IOrientationStrategy TurnLeft();
+    IPosition MoveFrom(IPosition currentPosition);
   }
 }

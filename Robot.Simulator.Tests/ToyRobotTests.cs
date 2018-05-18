@@ -27,10 +27,5 @@ namespace Robot.Simulator.Tests
       //assert
       Assert.AreEqual(false, isValid);
     }
-
-    public void ReturnCommandInvalid_IfFirstCommandIsNotPlace()
-    {
-      
-    }
   }
 }

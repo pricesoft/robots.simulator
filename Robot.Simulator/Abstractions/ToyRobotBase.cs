@@ -9,6 +9,9 @@ namespace Robots.Simulator.Abstractions
     public abstract void ChangeLeft();
     public abstract void ChangeRight();
 
+    public abstract IOrientationStrategy GetCurrentOrientation();
+    public abstract IPosition GetCurrentPosition();
+
     public event EventHandler<ToyRobotCommandEventArgs> CommandCompletedEvent;
 
     private void OnCommandCompletedEvent(ToyRobotCommandEventArgs e)
@@ -17,12 +20,11 @@ namespace Robots.Simulator.Abstractions
       handler?.Invoke(this, e);
     }
 
-    protected void ReportAction(string command, IPosition newPosition)
+    protected void ReportAction(string command)
     {
       var toyRobotEventArgs = new ToyRobotCommandEventArgs
       {
         CommandName = command,
-        Position = newPosition
       };
 
       OnCommandCompletedEvent(toyRobotEventArgs);
