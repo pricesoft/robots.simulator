@@ -72,7 +72,9 @@ namespace Robots.Simulator
         break;
 
         default:
+
           _writer.WriteLine("Invalid command. Please provide a valid command");
+
         break;
       }
     }

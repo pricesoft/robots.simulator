@@ -25,7 +25,7 @@ namespace Robots.Simulator
 
       _currentOrientation = new NorthOrientationStrategy();
 
-      ReportAction("placed");
+      Report("placed");
 
       return true;
     }
@@ -34,21 +34,21 @@ namespace Robots.Simulator
     {
       _currentPosition = _currentOrientation.MoveFrom(_currentPosition);
 
-      ReportAction("moved");
+      Report("moved");
     }
 
     public override void ChangeLeft()
     {
       _currentOrientation = _currentOrientation.TurnLeft();
 
-      ReportAction("turned left");
+      Report("turned left");
     }
 
     public override void ChangeRight()
     {
       _currentOrientation = _currentOrientation.TurnRight();
 
-      ReportAction("turned right");
+      Report("turned right");
     }
 
     public override IOrientationStrategy GetCurrentOrientation()
